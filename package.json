@@ -1,0 +1,12 @@
+{
+  "name": "ns-shared",
+  "version": "0.1.0",
+  "description": "Shared logic for all NS projects — fix once, used everywhere.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./ocr": "./src/ocr/index.js"
+  },
+  "dependencies": {}
+}

@@ -3,3 +3,4 @@
 export * from "./ocr/index.js";
 export * as scrape from "./scrape/index.js";
 export * as numbering from "./numbering/index.js";
+export * as research from "./research/index.js";

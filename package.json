@@ -8,7 +8,8 @@
     ".": "./src/index.js",
     "./ocr": "./src/ocr/index.js",
     "./scrape": "./src/scrape/index.js",
-    "./numbering": "./src/numbering/index.js"
+    "./numbering": "./src/numbering/index.js",
+    "./research": "./src/research/index.js"
   },
   "dependencies": {}
 }

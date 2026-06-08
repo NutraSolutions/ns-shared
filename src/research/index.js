@@ -1,11 +1,11 @@
 // Domain research presets — supplement-industry scrape/search, on the shared Firecrawl.
 // One place for the query tuning so NS, Adept, Foundry all research the same way.
 //
-//   import { materialSupplier, supplementComan, supplementBrand } from "ns-shared/research";
-//   await materialSupplier({ query: "magnesium glycinate" });   // search
-//   await materialSupplier("https://supplier.com");             // scrape a known page
-//   await supplementComan({ query: "gummy manufacturer USA" });
-//   await supplementBrand("https://brand.com");
+//   import { materialSupplierScrape, supplementComanScrape, supplementBrandScrape } from "ns-shared/research";
+//   await materialSupplierScrape({ query: "magnesium glycinate" });   // search
+//   await materialSupplierScrape("https://supplier.com");             // scrape a known page
+//   await supplementComanScrape({ query: "gummy manufacturer USA" });
+//   await supplementBrandScrape("https://brand.com");
 //
 // Each takes a URL (string starting http) → scrape, or { query } → tuned search.
 import { scrape, search } from "../scrape/index.js";
@@ -18,19 +18,23 @@ async function route(input, qualifier, opts = {}) {
   return search(`${q} ${qualifier}`, opts);
 }
 
-// Raw-material / ingredient suppliers (was "supplier scrape" → material supplier).
-export function materialSupplier(input, opts) {
+// Raw-material / ingredient suppliers.
+export function materialSupplierScrape(input, opts) {
   return route(input, "raw material ingredient supplier wholesale", opts);
 }
 
 // Supplement contract manufacturers (co-mans / co-packers).
-export function supplementComan(input, opts) {
+export function supplementComanScrape(input, opts) {
   return route(input, "supplement contract manufacturer co-packer cGMP", opts);
 }
 
 // Supplement brands / finished-product companies.
-export function supplementBrand(input, opts) {
+export function supplementBrandScrape(input, opts) {
   return route(input, "supplement brand company finished product", opts);
 }
 
-export const RESEARCH_TYPES = { material: materialSupplier, coman: supplementComan, brand: supplementBrand };
+export const RESEARCH_TYPES = {
+  material: materialSupplierScrape,
+  coman: supplementComanScrape,
+  brand: supplementBrandScrape,
+};
